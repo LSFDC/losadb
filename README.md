@@ -1,8 +1,10 @@
 # Lost Saga Database + Web Tools
 ### Present by Lost Saga For Developer
 
+<a href="#" target="blank"><img src="./preview/screencapture-localhost-3000-2024-11-30-08_42_03.png" /></a>
+
 ## Tech Stack
-- NextJS
+- NextJS 15
 - TailwindCSS
 - ShadCN
 
