@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input'
 import { DropdownCategory } from './dropdown-category'
 import { useRouter } from 'next/navigation';
 import { DropdownAttackType } from './dropdown-attack';
+import { DropdownSort } from './dropdown-sort';
 
 
 export function SearchBar() {
@@ -26,6 +27,7 @@ export function SearchBar() {
                     onChange={handleSearchChange}
                     className="pl-9"
                 />
+                <DropdownSort />
                 <DropdownCategory />
                 <DropdownAttackType />
             </div>

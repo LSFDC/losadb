@@ -67,7 +67,7 @@ export function DropdownCategory() {
                 >
                     {value
                         ? categories.find((framework) => framework.value === value)?.label
-                        : "Category..."}
+                        : "Category"}
                     <ChevronsUpDown className="opacity-50" />
                 </Button>
             </PopoverTrigger>
@@ -84,7 +84,7 @@ export function DropdownCategory() {
                                     onSelect={(currentValue) => {
                                         setValue(currentValue === value ? "" : currentValue)
                                         searchParams.set('category', currentValue === value ? "" : currentValue);
-                                        router.replace(`/?${searchParams.toString()}`);
+                                        router.push(`/?${searchParams.toString()}`);
                                         setOpen(false)
                                     }}
                                 >

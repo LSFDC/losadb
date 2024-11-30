@@ -9,7 +9,7 @@ import {
     Command,
     CommandEmpty,
     CommandGroup,
-    CommandInput,
+
     CommandItem,
     CommandList,
 } from "@/components/ui/command"
@@ -18,41 +18,51 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 
-const attackType = [
+const sortList = [
     {
-        value: "melee",
-        label: "Melee",
+        value: "id.asc",
+        label: "ID ASC",
     },
     {
-        value: "range",
-        label: "Range",
+        value: "id.dsc",
+        label: "ID DSC",
     },
     {
-        value: "magic",
-        label: "Magic",
+        value: "name.asc",
+        label: "Name ASC",
     },
     {
-        value: "special",
-        label: "Special",
+        value: "name.dsc",
+        label: "Name DSC",
     },
     {
-        value: "bomb",
-        label: "Bomb",
+        value: "attack.asc",
+        label: "Attack ASC",
     },
+    {
+        value: "attack.dsc",
+        label: "Attack DSC",
+    },
+
 
 ]
 
 
-export function DropdownAttackType() {
+export function DropdownSort() {
 
     const [open, setOpen] = React.useState(false)
     const [value, setValue] = React.useState("")
 
     const searchParams = new URLSearchParams();
+
     const router = useRouter()
+    //get current search params
+    const query = useSearchParams()
+    const category = query.get("category")
+
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
@@ -63,33 +73,32 @@ export function DropdownAttackType() {
                     className="w-[200px] justify-between bg-blue-700 text-white hover:bg-blue-600"
                 >
                     {value
-                        ? attackType.find((framework) => framework.value === value)?.label
-                        : "Attack Type"}
+                        ? sortList.find((sort) => sort.value === value)?.label
+                        : "Sort By"}
                     <ChevronsUpDown className="opacity-50" />
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-[200px] p-0">
                 <Command>
-                    <CommandInput placeholder="Search Type..." />
                     <CommandList>
-                        <CommandEmpty>No attack type found.</CommandEmpty>
+                        <CommandEmpty>No sort found.</CommandEmpty>
                         <CommandGroup>
-                            {attackType.map((type) => (
+                            {sortList.map((list) => (
                                 <CommandItem
-                                    key={type.value}
-                                    value={type.value}
+                                    key={list.value}
+                                    value={list.value}
                                     onSelect={(currentValue) => {
                                         setValue(currentValue === value ? "" : currentValue)
-                                        searchParams.set('attack', currentValue === value ? "" : currentValue);
-                                        router.replace(`/?${searchParams.toString()}`);
+                                        searchParams.set('sort', currentValue === value ? "" : currentValue);
+                                        router.replace(`/?${category ? `category=${category}&` : ""}${searchParams.toString()}`);
                                         setOpen(false)
                                     }}
                                 >
-                                    {type.label}
+                                    {list.label}
                                     <Check
                                         className={cn(
                                             "ml-auto",
-                                            value === type.value ? "opacity-100" : "opacity-0"
+                                            value === list.value ? "opacity-100" : "opacity-0"
                                         )}
                                     />
                                 </CommandItem>

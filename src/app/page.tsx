@@ -10,11 +10,12 @@ export default async function Home({
   const search = (await searchParams)?.search
   const category = (await searchParams)?.category
   const attack = (await searchParams)?.attack
+  const sort = (await searchParams)?.sort
 
   return (
     <div className="space-y-8">
       <SearchBar />
-      <MercenaryGrid search={search} category={category} attack={attack} />
+      <MercenaryGrid search={search} category={category} attack={attack} sort={sort} />
     </div>
   );
 }
