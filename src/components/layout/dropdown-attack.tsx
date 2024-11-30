@@ -21,35 +21,28 @@ import {
 import { useRouter } from "next/navigation"
 
 
-const categories = [
+const attackType = [
     {
-        value: "normal",
-        label: "Normal",
+        value: "melee",
+        label: "Melee",
     },
     {
-        value: "premium",
-        label: "Premium",
+        value: "range",
+        label: "Range",
     },
     {
-        value: "rare",
-        label: "Rare",
+        value: "magic",
+        label: "Magic",
     },
     {
-        value: "unique",
-        label: "Unique",
+        value: "special",
+        label: "Special",
     },
-    {
-        value: "reform",
-        label: "Reform",
-    },
-    {
-        value: "idol",
-        label: "Idol",
-    },
+
 ]
 
 
-export function DropdownCategory() {
+export function DropdownAttackType() {
 
     const [open, setOpen] = React.useState(false)
     const [value, setValue] = React.useState("")
@@ -66,33 +59,33 @@ export function DropdownCategory() {
                     className="w-[200px] justify-between bg-blue-700 text-white hover:bg-blue-600"
                 >
                     {value
-                        ? categories.find((framework) => framework.value === value)?.label
-                        : "Category..."}
+                        ? attackType.find((framework) => framework.value === value)?.label
+                        : "Attack Type..."}
                     <ChevronsUpDown className="opacity-50" />
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-[200px] p-0">
                 <Command>
-                    <CommandInput placeholder="Search category..." />
+                    <CommandInput placeholder="Search Type..." />
                     <CommandList>
                         <CommandEmpty>No category found.</CommandEmpty>
                         <CommandGroup>
-                            {categories.map((category) => (
+                            {attackType.map((type) => (
                                 <CommandItem
-                                    key={category.value}
-                                    value={category.value}
+                                    key={type.value}
+                                    value={type.value}
                                     onSelect={(currentValue) => {
                                         setValue(currentValue === value ? "" : currentValue)
-                                        searchParams.set('category', currentValue === value ? "" : currentValue);
+                                        searchParams.set('attack', currentValue === value ? "" : currentValue);
                                         router.replace(`/?${searchParams.toString()}`);
                                         setOpen(false)
                                     }}
                                 >
-                                    {category.label}
+                                    {type.label}
                                     <Check
                                         className={cn(
                                             "ml-auto",
-                                            value === category.value ? "opacity-100" : "opacity-0"
+                                            value === type.value ? "opacity-100" : "opacity-0"
                                         )}
                                     />
                                 </CommandItem>

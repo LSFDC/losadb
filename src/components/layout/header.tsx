@@ -2,17 +2,29 @@
 
 import { Database, } from 'lucide-react'
 import { ThemeToggle } from '../theme-toggle'
+import Link from 'next/link'
 
 
 export function Header() {
     return (
         <header className="border-b">
-            <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div className="container mx-auto px-12 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <Database className="h-6 w-6 text-primary" />
-                    <h1 className="text-xl font-bold">Lost Saga Database</h1>
+                    <Link href="/">
+                        <h1 className="text-xl font-bold">Lost Saga Database</h1>
+                    </Link>
                 </div>
-                <ThemeToggle />
+
+                {/* Navigation */}
+                <div className="flex gap-4 items-center justify-center">
+                    <nav className="flex items-center gap-2">
+
+                        <Link href="/tools" className='hover:bg-blue-700 text-white px-4 py-2 rounded-md'>Tools</Link>
+                        <Link href="https://github.com/LSFDC/losadb" target='_blank' rel='noopener noreferrer' className='hover:bg-blue-700 text-white px-4 py-2 rounded-md'>Github</Link>
+                    </nav>
+                    <ThemeToggle />
+                </div>
             </div>
         </header>
     )

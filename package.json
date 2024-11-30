@@ -1,6 +1,6 @@
 {
-  "name": "losadbnew",
-  "version": "0.1.0",
+  "name": "losadb",
+  "version": "0.1.5",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
