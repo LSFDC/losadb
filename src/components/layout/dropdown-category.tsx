@@ -63,6 +63,7 @@ export function DropdownCategory() {
                 <Button
                     role="combobox"
                     aria-expanded={open}
+                    aria-label="Select a category"
                     className="w-[200px] justify-between bg-blue-700 text-white hover:bg-blue-600"
                 >
                     {value

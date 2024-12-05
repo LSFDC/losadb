@@ -1,5 +1,6 @@
 import { mercenary } from '@/data/mercenary';
 import { MercenaryCard } from './mercenary-card';
+import { Suspense } from 'react';
 
 export function MercenaryGrid({
     search,
@@ -31,7 +32,7 @@ export function MercenaryGrid({
 
     // Sort the filtered data
     const sortedMercenaries = filteredMercenaries.sort((a, b) => {
-        if (!sort) return a.id - b.id;; // No sorting if `sort` is not provided
+        if (!sort) return a.id - b.id;
 
         switch (sort.toLowerCase()) {
             case 'name.asc':
@@ -53,13 +54,16 @@ export function MercenaryGrid({
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sortedMercenaries.length > 0 ? (
-                sortedMercenaries.map((hero) => (
-                    <MercenaryCard key={hero.id} hero={hero} />
-                ))
-            ) : (
-                <p>Heroes not found.</p>
-            )}
+            <Suspense fallback={<p>Loading...</p>}>
+                {sortedMercenaries.length > 0 ? (
+                    sortedMercenaries.map((hero) => (
+                        <MercenaryCard key={hero.id} hero={hero} />
+                    ))
+                ) : (
+                    <p>Heroes not found.</p>
+                )}
+            </Suspense>
+
         </div>
     );
 }

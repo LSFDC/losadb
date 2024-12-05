@@ -19,19 +19,22 @@ export function SearchBar() {
     };
 
     return (
-        <div className="relative">
-            <div className="flex gap-4">
+        <div className="flex flex-col lg:flex-row gap-4">
+            <div className="relative w-full">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                     placeholder="Search heroes..."
                     onChange={handleSearchChange}
+
                     className="pl-9"
                 />
+
+            </div>
+            <div className='flex gap-4'>
                 <DropdownSort />
                 <DropdownCategory />
                 <DropdownAttackType />
             </div>
-
         </div>
     )
 }

@@ -60,6 +60,7 @@ export function DropdownAttackType() {
                 <Button
                     role="combobox"
                     aria-expanded={open}
+                    aria-label="Select a attack type"
                     className="w-[200px] justify-between bg-blue-700 text-white hover:bg-blue-600"
                 >
                     {value

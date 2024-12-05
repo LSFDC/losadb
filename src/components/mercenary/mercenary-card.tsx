@@ -3,10 +3,10 @@ import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 
-import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { useState } from 'react'
 import { Mercenary } from '@/types/mercenary'
+import { MercenaryDetail } from './mercenary-detail'
 
 interface MercenaryCardProps {
     hero: Mercenary
@@ -26,9 +26,8 @@ export function MercenaryCard({ hero }: MercenaryCardProps) {
                     height={128}
                     onMouseEnter={() => setImageSrc(hero.thumb_female)}
                     onMouseLeave={() => setImageSrc(hero.thumb_male)}
-
-
-                    priority
+                    placeholder='blur'
+                    blurDataURL={imageSrc}
                 />
                 <div className="flex w-full flex-col justify-between">
                     <div className="flex flex-col">
@@ -55,14 +54,8 @@ export function MercenaryCard({ hero }: MercenaryCardProps) {
                         </div>
                     </div>
                     <div className="flex items-center justify-between md:mt-3">
-                        <Link
-                            aria-label="View Hero"
-                            type="button"
-                            className="group relative m-2 w-full overflow-hidden rounded-md bg-emerald-600 p-2 text-center text-sm font-bold  transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-500"
-                            href="#"
-                        >
-                            Detail
-                        </Link>
+
+                        <MercenaryDetail mercenary_id={hero.id} />
                     </div>
                 </div>
             </div>
