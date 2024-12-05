@@ -19,7 +19,7 @@ export function Header() {
                 {/* Navigation */}
                 <div className="flex gap-4 items-center justify-center">
                     <nav className="hidden lg:flex items-center gap-2">
-
+                        <Link href="/api/swagger" target='_blank' className='hover:bg-blue-700 px-4 py-2 rounded-md hover:text-white'>API</Link>
                         <Link href="/tools" className='hover:bg-blue-700 px-4 py-2 rounded-md hover:text-white'>Tools</Link>
                         <Link href="https://github.com/LSFDC/losadb" target='_blank' rel='noopener noreferrer' className='hover:bg-blue-700  px-4 py-2 rounded-md hover:text-white'>Github</Link>
                     </nav>
