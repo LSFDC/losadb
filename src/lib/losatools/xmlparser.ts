@@ -18,6 +18,8 @@ export interface Imageset {
   Name: string;
   File: string;
   Images: Image[];
+  ImageWidth: number;
+  ImageHeight: number;
 }
 
 export interface ImagesetLayout {
@@ -40,6 +42,12 @@ export function parseXml(filePath: string): ImagesetLayout {
       ? jsonObj.ImagesetLayout.Imageset
       : [jsonObj.ImagesetLayout.Imageset]
     ).map((imageset: any) => {
+      //skipping .bmp
+      if (imageset.File.endsWith(".bmp")) return null;
+
+      // force skip for UIIconPack158
+      if (imageset?.Name === "UIIconPack158") return null;
+
       return {
         Name: imageset?.Name,
         File: imageset.File,
@@ -48,27 +56,14 @@ export function parseXml(filePath: string): ImagesetLayout {
           : [imageset.Image]
         )
           .map((image: any) => {
-            // Skip images with missing properties
-            if (
-              !image ||
-              !image.X ||
-              !image.Y ||
-              !image.Width ||
-              !image.Height
-            ) {
-              console.log("Skipping image due to missing properties: " + image);
-
-              return null;
-            }
-
             return {
               Name: image?.Name,
-              X: Number(image.X),
-              Y: Number(image.Y),
-              Width: Number(image.Width),
-              Height: Number(image.Height),
-              OffsetX: Number(image.OffsetX),
-              OffsetY: Number(image.OffsetY),
+              X: Number(image?.X ?? 0),
+              Y: Number(image?.Y ?? 0),
+              Width: Number(image?.Width ?? 0),
+              Height: Number(image?.Height ?? 0),
+              OffsetX: Number(image?.OffsetX ?? 0),
+              OffsetY: Number(image?.OffsetY ?? 0),
             };
           })
           .filter((image: any) => image !== null),
@@ -76,7 +71,7 @@ export function parseXml(filePath: string): ImagesetLayout {
     }),
   };
 
-  console.log("Final Imageset Layout: " + imagesetLayout);
+  console.log("Final Imageset Layout ");
 
   return imagesetLayout;
 }

@@ -22,6 +22,7 @@ export function Header() {
                         <Link href="/api/swagger" target='_blank' className='hover:bg-blue-700 px-4 py-2 rounded-md hover:text-white'>API</Link>
                         <Link href="/tools" className='hover:bg-blue-700 px-4 py-2 rounded-md hover:text-white'>Tools</Link>
                         <Link href="https://github.com/LSFDC/losadb" target='_blank' rel='noopener noreferrer' className='hover:bg-blue-700  px-4 py-2 rounded-md hover:text-white'>Github</Link>
+                        <Link href="https://discord.gg/b5MeZxYEZf" target='_blank' rel='noopener noreferrer' className='hover:bg-blue-700  px-4 py-2 rounded-md hover:text-white'>Discord</Link>
                     </nav>
                     <ThemeToggle />
                 </div>
