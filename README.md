@@ -2,11 +2,16 @@
 ### Present by Lost Saga For Developer
 
 ## Preview
-<a href="#" target="blank"><img src="./preview/Screenshot 2024-12-05 155223.png" /></a>
 
-<a href="#" target="blank"><img src="./preview/Screenshot 2024-12-05 155317.png" /></a>
+<a href="#" target="blank"><img align="left" width="250" src="./preview/Screenshot 2024-12-05 155223.png" /></a>
 
-<a href="#" target="blank"><img src="./preview/Screenshot 2024-12-05 225906.png" /></a>
+<a href="#" target="blank"><img width="250" src="./preview/Screenshot 2024-12-05 155317.png" /></a>
+
+<a href="#" target="blank"><img  src="./preview/Screenshot 2024-12-05 225906.png" /></a>
+
+<a href="#" target="blank"><img align="left" width="250" src="./preview/screencapture-localhost-3000-tools-iconbrowser-2024-12-07-08_34_37.png" /></a>
+
+<a href="#" target="blank"><img width="250" src="./preview/screencapture-localhost-3000-tools-iconbrowser-2024-12-07-09_11_24.png" /></a>
 
 ## Tech Stack
 - NextJS 15
